@@ -20,7 +20,8 @@ services:
         condition: service_healthy
     extra_hosts:
       # - "invoice.webshapepd.de:172.19.0.1" # fix for missing logo --> https://github.com/invoiceninja/dockerfiles/issues/716
-      - "invoice.webshapepd.de:host-gateway"
+      # - "invoice.webshapepd.de:host-gateway"
+      - "invoice.webshapepd.de:172.31.0.1"
 
   nginx:
     image: nginx:alpine
