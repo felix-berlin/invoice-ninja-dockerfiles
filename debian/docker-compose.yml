@@ -19,9 +19,7 @@ services:
       redis:
         condition: service_healthy
     extra_hosts:
-      # - "invoice.webshaped.de:172.19.0.1" # fix for missing logo --> https://github.com/invoiceninja/dockerfiles/issues/716
-      - "invoice.webshaped.de:host-gateway"
-      # - "invoice.webshaped.de:172.31.0.1"
+      - "invoice.webshaped.de:host-gateway" # fix for missing logo --> https://github.com/invoiceninja/dockerfiles/issues/716
 
   nginx:
     image: nginx:alpine
