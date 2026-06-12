@@ -20,12 +20,12 @@ services:
         condition: service_healthy
     extra_hosts:
       - "invoice.webshaped.de:host-gateway" # fix for missing logo --> https://github.com/invoiceninja/dockerfiles/issues/716
-    healthcheck:
-      test: ["CMD-SHELL", "nc -z localhost 9000 || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 15
-      start_period: 90s   # gibt dem init.sh (Migrations, public folder copy) Zeit
+    # healthcheck:
+    #   test: ["CMD-SHELL", "nc -z localhost 9000 || exit 1"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 15
+    #   start_period: 90s   # gibt dem init.sh (Migrations, public folder copy) Zeit
 
   nginx:
     image: nginx:alpine
@@ -37,9 +37,9 @@ services:
       - ./nginx:/etc/nginx/conf.d:ro
       - app_public:/var/www/html/public:ro
       - /volume2/docker/invoice-ninja/storage:/var/www/html/storage:ro
-    depends_on:
-      app:
-        condition: service_healthy
+    # depends_on:
+    #   app:
+    #     condition: service_healthy
 
   mysql:
     image: mysql:8
