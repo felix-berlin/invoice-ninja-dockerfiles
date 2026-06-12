@@ -37,9 +37,9 @@ services:
       - ./nginx:/etc/nginx/conf.d:ro
       - app_public:/var/www/html/public:ro
       - /volume2/docker/invoice-ninja/storage:/var/www/html/storage:ro
-    # depends_on:
-    #   app:
-    #     condition: service_healthy
+    depends_on:
+      app:
+        condition: service_healthy
 
   mysql:
     image: mysql:8
