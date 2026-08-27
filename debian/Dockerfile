@@ -82,7 +82,10 @@ COPY php/php-fpm.conf /usr/local/etc/php-fpm.d/invoiceninja.conf
 RUN echo "skip-ssl = true" >> /etc/mysql/mariadb.conf.d/50-client.cnf
 
 # Setup supervisor
-COPY supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+# New top-level conf
+COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+# Invoice Ninja Programs
+COPY supervisor/programs.conf /etc/supervisor/conf.d/programs.conf
 
 # Setup InvoiceNinja
 COPY --from=prepare-app --chown=www-data:www-data /var/www/html /var/www/html
